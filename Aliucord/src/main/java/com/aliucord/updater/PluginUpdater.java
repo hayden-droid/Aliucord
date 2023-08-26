@@ -85,12 +85,12 @@ public class PluginUpdater {
                 if (Main.settings.getBool(AliucordPageKt.AUTO_UPDATE_ALIUCORD_KEY, false)) {
                     try {
                         Updater.updateAliucord(Utils.appActivity);
-                        body = "Auto updated Aliucord. Please restart Aliucord to load the update - " + body;
+                        body = "Auto updated Memeitizer-Cord. Please restart Memeitizer-Cord to load the update - " + body;
                     } catch (Throwable th) {
-                        body = "Failed to auto update Aliucord. Please update it manually - " + body;
+                        body = "Failed to auto update Memeitizer-Cord. Please update it manually - " + body;
                     }
                 } else {
-                    body = "Your Aliucord is outdated. Please update it to the latest version - " + body;
+                    body = "Your Memeitizer-Cord is outdated. Please update it to the latest version - " + body;
                 }
             }
         }
