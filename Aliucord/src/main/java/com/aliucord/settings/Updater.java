@@ -44,7 +44,7 @@ public class Updater extends SettingsPage {
         Utils.threadPool.execute(() -> {
             Snackbar sb;
             if (usingDexFromStorage()) {
-                sb = Snackbar.make(getLinearLayout(), "Updater disabled due to using Aliucord from storage.", Snackbar.LENGTH_INDEFINITE);
+                sb = Snackbar.make(getLinearLayout(), "Updater disabled due to using Memeitizer-Cord from storage.", Snackbar.LENGTH_INDEFINITE);
             } else if (isDiscordOutdated()) {
                 sb = Snackbar
                     .make(getLinearLayout(), "Your Base Discord is outdated. Please update using the installer.", BaseTransientBottomBar.LENGTH_INDEFINITE)
@@ -54,16 +54,16 @@ public class Updater extends SettingsPage {
                         if (i != null)
                             ctx.startActivity(i);
                         else
-                            Utils.showToast("Please install the Aliucord installer and try again.");
+                            Utils.showToast("Please install the Memeitizer-Cord installer and try again.");
                     });
             } else if (isAliucordOutdated()) {
                 sb = Snackbar
-                    .make(getLinearLayout(), "Your Aliucord is outdated.", Snackbar.LENGTH_INDEFINITE)
+                    .make(getLinearLayout(), "Your Memeitizer-Cord is outdated.", Snackbar.LENGTH_INDEFINITE)
                     .setAction("Update", v -> Utils.threadPool.execute(() -> {
                         var ctx = v.getContext();
                         try {
                             updateAliucord(ctx);
-                            Utils.showToast("Successfully updated Aliucord.");
+                            Utils.showToast("Successfully updated Memeitizer-Cord.");
                             Snackbar rb = Snackbar
                                 .make(getLinearLayout(), "Restart to apply the update.", Snackbar.LENGTH_INDEFINITE)
                                 .setAction("Restart", e -> {
@@ -76,7 +76,7 @@ public class Updater extends SettingsPage {
                             rb.setActionTextColor(Color.BLACK);
                             rb.show();
                         } catch (Throwable th) {
-                            PluginUpdater.logger.errorToast("Failed to update Aliucord. Check the debug log for more info", th);
+                            PluginUpdater.logger.errorToast("Failed to update Memeitizer-Cord. Check the debug log for more info", th);
                         }
                     }));
             } else return;
