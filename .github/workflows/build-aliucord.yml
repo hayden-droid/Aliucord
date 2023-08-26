@@ -1,4 +1,4 @@
-name: Build Aliucord
+name: Build Memeitizer-Cord
 
 on:
   push:
