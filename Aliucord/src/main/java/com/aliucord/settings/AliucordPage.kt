@@ -29,19 +29,19 @@ class AliucordPage : SettingsPage() {
     override fun onViewBound(view: View) {
         super.onViewBound(view)
 
-        setActionBarTitle("Aliucord")
-        setActionBarSubtitle("Aliucord Settings")
+        setActionBarTitle("Memeitizer-Cord")
+        setActionBarSubtitle("Memeitizer-Cord Settings")
 
         val ctx = view.context
 
-        addHeader(ctx, "Aliucord Settings")
+        addHeader(ctx, "Memeitizer-Cord Settings")
         addSwitch(ctx,
             AUTO_DISABLE_ON_CRASH_KEY,
             "Automatically disable plugins on crash",
             "When a plugin is found to be causing crashes, it will automatically be disabled",
             true
         )
-        addSwitch(ctx, AUTO_UPDATE_ALIUCORD_KEY, "Automatically update Aliucord", null)
+        addSwitch(ctx, AUTO_UPDATE_ALIUCORD_KEY, "Automatically update Memeitizer-Cord", null)
         addSwitch(ctx, AUTO_UPDATE_PLUGINS_KEY, "Automatically update plugins", null)
 
         if (StoreStream.getUserSettings().isDeveloperMode) {
@@ -50,7 +50,7 @@ class AliucordPage : SettingsPage() {
             addSwitch(
                 ctx,
                 ALIUCORD_FROM_STORAGE_KEY,
-                "Use Aliucord from storage",
+                "Use Memeitizer-Cord from storage",
                 "Meant for developers. Do not enable unless you know what you're doing. If someone else is telling you to do this, you are likely being scammed."
             )
         }
@@ -63,7 +63,7 @@ class AliucordPage : SettingsPage() {
         addLink(ctx, "Support Server", R.e.ic_help_24dp) {
             Utils.joinSupportServer(it.context)
         }
-        addLink(ctx, "Support us on Patreon", R.e.ic_heart_24dp) {
+        addLink(ctx, "Support us on Paypal", R.e.ic_heart_24dp) {
             Utils.launchUrl(Constants.ALIUCORD_PATREON)
         }
         /*addLink(ctx, "... or on OnlyFans", R.e.ic_heart_24dp) {
