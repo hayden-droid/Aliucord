@@ -1,4 +1,4 @@
-name: Build Injector
+name: Build Injectorf
 
 on:
   push:
