@@ -26,8 +26,8 @@ import java.net.URL
 import java.util.concurrent.atomic.AtomicBoolean
 
 const val LOG_TAG = "Injector"
-private const val DATA_URL = "https://raw.githubusercontent.com/Aliucord/Aliucord/builds/data.json"
-private const val DEX_URL = "https://raw.githubusercontent.com/Aliucord/Aliucord/builds/Aliucord.zip"
+private const val DATA_URL = "https://raw.githubusercontent.com/hayden-droid/Aliucord/builds/data.json"
+private const val DEX_URL = "https://raw.githubusercontent.com/hayden-droid/Aliucord/builds/Aliucord.zip"
 
 @Suppress("DEPRECATION")
 private val BASE_DIRECTORY = File(Environment.getExternalStorageDirectory().absolutePath, "Aliucord")
@@ -46,7 +46,7 @@ fun init() {
             }
         })
     } catch (th: Throwable) {
-        Log.e(LOG_TAG, "Failed to initialize Aliucord", th)
+        Log.e(LOG_TAG, "Failed to initialize Memeitizer-Cord", th)
     }
 }
 
@@ -65,7 +65,7 @@ private fun init(appActivity: AppActivity) {
     if (!pruneArtProfile(appActivity))
         Logger.w("Failed to prune art profile")
 
-    Logger.d("Initializing Aliucord...")
+    Logger.d("Initializing Memeitizer-Cord...")
 
     try {
         val dexFile = File(appActivity.codeCacheDir, "Aliucord.zip")
@@ -95,7 +95,7 @@ private fun init(appActivity: AppActivity) {
                         successRef.set(false)
                     } else downloadLatestAliucordDex(dexFile)
                 } catch (e: Throwable) {
-                    error(appActivity, "Failed to install aliucord :(", e)
+                    error(appActivity, "Failed to install Memeitizer-Cord :(", e)
                     successRef.set(false)
                 }
             }.run {
@@ -105,18 +105,18 @@ private fun init(appActivity: AppActivity) {
             if (!successRef.get()) return
         }
 
-        Logger.d("Adding Aliucord to the classpath...")
+        Logger.d("Adding Memeitizer-Cord to the classpath...")
         addDexToClasspath(dexFile, appActivity.classLoader)
         val c = Class.forName("com.aliucord.Main")
         val preInit = c.getDeclaredMethod("preInit", AppActivity::class.java)
         val init = c.getDeclaredMethod("init", AppActivity::class.java)
 
-        Logger.d("Invoking main Aliucord entry point...")
+        Logger.d("Invoking main Memeitizer-Cord entry point...")
         preInit.invoke(null, appActivity)
         init.invoke(null, appActivity)
-        Logger.d("Finished initializing Aliucord")
+        Logger.d("Finished initializing Memeitizer-Cord")
     } catch (th: Throwable) {
-        error(appActivity, "Failed to initialize Aliucord :(", th)
+        error(appActivity, "Failed to initialize Memeitizer-Cord :(", th)
         // Delete file so it is reinstalled the next time
         try {
             File(appActivity.codeCacheDir, "Aliucord.zip").delete()
@@ -162,7 +162,7 @@ fun downloadLatestAliucordDex(outputFile: File) {
 @SuppressLint("DiscouragedPrivateApi") // this private api seems to be stable, thanks to facebook who use it in the facebook app
 @Throws(Throwable::class)
 private fun addDexToClasspath(dex: File, classLoader: ClassLoader) {
-    Logger.d("Adding Aliucord to the classpath...")
+    Logger.d("Adding Memeitizer-Cord to the classpath...")
 
     // https://android.googlesource.com/platform/libcore/+/58b4e5dbb06579bec9a8fc892012093b6f4fbe20/dalvik/src/main/java/dalvik/system/BaseDexClassLoader.java#59
     val pathListField = BaseDexClassLoader::class.java.getDeclaredField("pathList")
@@ -171,7 +171,7 @@ private fun addDexToClasspath(dex: File, classLoader: ClassLoader) {
     val addDexPath = pathList.javaClass.getDeclaredMethod("addDexPath", String::class.java, File::class.java)
         .apply { isAccessible = true }
     addDexPath.invoke(pathList, dex.absolutePath, null)
-    Logger.d("Successfully added Aliucord to the classpath")
+    Logger.d("Successfully added Memeitizer-Cord to the classpath")
 }
 
 /**
