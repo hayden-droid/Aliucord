@@ -52,13 +52,13 @@ public class Updater {
 
     @SuppressWarnings("BooleanMethodIsAlwaysInverted")
     private static boolean fetchAliucordData() {
-        try (var req = new Http.Request("https://raw.githubusercontent.com/Aliucord/Aliucord/builds/data.json")) {
+        try (var req = new Http.Request("https://raw.githubusercontent.com/hayden-droid/Aliucord/builds/data.json")) {
             var res = req.execute().json(AliucordData.class);
             isAliucordOutdated = !BuildConfig.GIT_REVISION.equals(res.aliucordHash);
             isDiscordOutdated = Constants.DISCORD_VERSION < res.versionCode;
             return true;
         } catch (IOException ex) {
-            PluginUpdater.logger.error("Failed to check updates for Aliucord", ex);
+            PluginUpdater.logger.error("Failed to check updates for Memeitizer-Cord", ex);
             return false;
         }
     }
